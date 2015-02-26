@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>nw-unit-testing</title>
+        <link rel="stylesheet" href="vendor/mocha.css" />
+    </head>
+    <body>
+        <h1>nw-unit-testing</h1>
+        <div id="mocha"></div>
+
+        <script>
+            window.test = window.test ? window.test : {};
+            window.test.path = require('path');
+            window.test.sync = require(window.test.path.join(process.cwd(), 'lib/sync.js'));
+            window.test.async = require(window.test.path.join(process.cwd(), 'lib/async.js'));
+        </script>
+        <script type="text/javascript" src="vendor/mocha.js"></script>
+        <script type="text/javascript" src="vendor/blanket.min.js"></script>
+        <script type="text/javascript" src="vendor/mocha-blanket.js"></script>
+        <script type="text/javascript" src="vendor/chai.js"></script>
+        <script>
+          mocha.setup('bdd');
+          chai.should();
+        </script>
+        <script data-cover src="test/test_sync.js"></script>
+        <script data-cover src="test/test_async.js"></script>
+    </body>
+</html>
